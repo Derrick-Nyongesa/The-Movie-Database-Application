@@ -1,9 +1,33 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MoviesService {
+  baseUrl: string;
+  apiKey: string;
+  language: string;
+  region: string;
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    this.baseUrl = 'https://api.themoviedb.org/3/';
+    this.apiKey = environment.apiKey;
+    this.language = 'en-us';
+    this.region = 'US';
+  }
+
+  getNowPlaying(page: number): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}movie/now_playing?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`
+    );
+  }
+
+  getUpcoming(page: number): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}movie/upcoming?api_key=${this.apiKey}&language=${this.language}&page=${page}&region=${this.region}`
+    );
+  }
 }
