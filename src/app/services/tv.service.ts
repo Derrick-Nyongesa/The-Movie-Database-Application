@@ -24,4 +24,16 @@ export class TvService {
       `${this.baseUrl}tv/on_the_air?api_key=${this.apiKey}&page=${page}&language=${this.language}`
     );
   }
+
+  getTopRatedTVShows(page: number): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}tv/top_rated?api_key=${this.apiKey}&page=${page}&language=${this.language}`
+    );
+  }
+
+  getPopularTVShow(page: number): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}tv/popular?api_key=${this.apiKey}&page=${page}&language=${this.language}`
+    );
+  }
 }

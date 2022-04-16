@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   upcoming: any;
 
   tvShows: any;
+  topRatedTv: any;
+  popularTv: any;
 
   constructor(
     private movie: MoviesService,
@@ -31,6 +33,8 @@ export class HomeComponent implements OnInit {
     this.topRatedMovies(1);
     this.popularMovies(1);
     this.upComingMovies(1);
+    this.topRatedTvShows(1);
+    this.popularTvShows(1);
   }
 
   trendingMovies(page: number) {
@@ -60,6 +64,18 @@ export class HomeComponent implements OnInit {
   trendingTvShows(page: number) {
     this.tv.getTvOnTheAir(page).subscribe((res) => {
       this.tvShows = res.results;
+    });
+  }
+
+  topRatedTvShows(page: number) {
+    this.tv.getTopRatedTVShows(page).subscribe((res) => {
+      this.topRatedTv = res.results;
+    });
+  }
+
+  popularTvShows(page: number) {
+    this.tv.getPopularTVShow(page).subscribe((res) => {
+      this.popularTv = res.results;
     });
   }
 }

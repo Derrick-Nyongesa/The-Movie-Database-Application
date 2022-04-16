@@ -94,19 +94,61 @@
   </div>
 </div>
 
-<div class="wrapper">
+<div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
   <h1>Trending TV Shows</h1>
+  <a routerLinkActive="router-link-active" class="listing__explore">
+    <strong>Explore All</strong>
+  </a>
+  <div>
+    <div>
+      <carousel [arrowsOutside]="true" [cellsToShow]="5">
+        <div *ngFor="let t of tvShows" class="carousel-cell thumb">
+          <img
+            *ngIf="t?.poster_path"
+            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+              t?.poster_path
+            }}"
+          />
+        </div>
+      </carousel>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
+  <h1>Top-Rated TV Shows</h1>
   <a routerLinkActive="router-link-active" class="listing__explore">
     <strong>Explore All</strong> </a
   ><br /><br />
   <div>
     <div>
       <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let m of tvShows" class="carousel-cell thumb">
+        <div *ngFor="let t of topRatedTv" class="carousel-cell thumb">
           <img
-            *ngIf="m?.poster_path"
+            *ngIf="t?.poster_path"
             src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              m?.poster_path
+              t?.poster_path
+            }}"
+          />
+        </div>
+      </carousel>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
+  <h1>Popular TV Shows</h1>
+  <a routerLinkActive="router-link-active" class="listing__explore">
+    <strong>Explore All</strong> </a
+  ><br /><br />
+  <div>
+    <div>
+      <carousel [arrowsOutside]="true" [cellsToShow]="5">
+        <div *ngFor="let t of popularTv" class="carousel-cell thumb">
+          <img
+            *ngIf="t?.poster_path"
+            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+              t?.poster_path
             }}"
           />
         </div>
