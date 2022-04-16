@@ -32,7 +32,6 @@ export class HeroImageComponent implements OnInit {
   constructor(private movie: MoviesService) {
     this.movie.getVariant().then((variants) => {
       this.variant = variants;
-      console.log(variants);
     });
   }
 

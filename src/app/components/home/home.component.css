@@ -69,3 +69,21 @@ img {
 img:hover {
   opacity: 0.8;
 }
+
+.listing__explore {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  color: #353535;
+  letter-spacing: 0.4px;
+}
+
+@media (min-width: $breakpoint-large) {
+  .listing__explore {
+    font-size: 1.4rem;
+  }
+}
+
+.listing__explore:hover,
+:focus {
+  opacity: 0.8;
+}

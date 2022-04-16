@@ -38,4 +38,22 @@ export class MoviesService {
       )
       .toPromise();
   }
+
+  getTopRatedMovies(page: number): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}movie/top_rated?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`
+    );
+  }
+
+  getPopular(page: number): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}movie/popular?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`
+    );
+  }
+
+  getUpComingMovies(page: number): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}movie/upcoming?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`
+    );
+  }
 }

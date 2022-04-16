@@ -13,7 +13,9 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
   nowPlaying: any;
   responsiveOptions;
-  latest: any;
+  topRated: any;
+  popular: any;
+  upcoming: any;
 
   tvShows: any;
 
@@ -26,19 +28,38 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.trendingMovies(1);
     this.trendingTvShows(1);
+    this.topRatedMovies(1);
+    this.popularMovies(1);
+    this.upComingMovies(1);
   }
 
   trendingMovies(page: number) {
     this.movie.getNowPlaying(page).subscribe((res: any) => {
       this.nowPlaying = res.results;
-      console.log(res);
+    });
+  }
+
+  topRatedMovies(page: number) {
+    this.movie.getTopRatedMovies(page).subscribe((res: any) => {
+      this.topRated = res.results;
+    });
+  }
+
+  popularMovies(page: number) {
+    this.movie.getPopular(page).subscribe((res: any) => {
+      this.popular = res.results;
+    });
+  }
+
+  upComingMovies(page: number) {
+    this.movie.getUpComingMovies(page).subscribe((res: any) => {
+      this.upcoming = res.results;
     });
   }
 
   trendingTvShows(page: number) {
     this.tv.getTvOnTheAir(page).subscribe((res) => {
       this.tvShows = res.results;
-      console.log(res);
     });
   }
 }
