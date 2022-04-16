@@ -56,4 +56,10 @@ export class MoviesService {
       `${this.baseUrl}movie/upcoming?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`
     );
   }
+
+  getAllTopRatedMovies(): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}movie/top_rated?api_key=${this.apiKey}&language=${this.language}&region=${this.region}`
+    );
+  }
 }

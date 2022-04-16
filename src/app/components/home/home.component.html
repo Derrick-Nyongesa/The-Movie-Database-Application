@@ -1,15 +1,9 @@
 <app-hero-image></app-hero-image>
-<!-- <div class="search_wrapper">
-  <div class="search_content">
-    <img src="../../../assets/search-icon.svg" alt="search-icon" />
-    <input type="text" placeholder="Search Movie" />
-  </div>
-</div> -->
 
 <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
   <h1>Trending Movies</h1>
   <a
-    [routerLink]="['/movies']"
+    [routerLink]="['/trending']"
     routerLinkActive="router-link-active"
     class="listing__explore"
   >
@@ -33,7 +27,11 @@
 
 <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
   <h1>Top-Rated Movies</h1>
-  <a routerLinkActive="router-link-active" class="listing__explore">
+  <a
+    [routerLink]="['/top-rated']"
+    routerLinkActive="router-link-active"
+    class="listing__explore"
+  >
     <strong>Explore All</strong> </a
   ><br /><br />
   <div>

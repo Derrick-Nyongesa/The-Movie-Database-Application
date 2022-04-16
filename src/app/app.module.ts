@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MoviesComponent } from './components/movies/movies.component';
+import { TrendingMoviesComponent } from './components/trending-movies/trending-movies.component';
+import { TopRatedMoviesComponent } from './components/top-rated-movies/top-rated-movies.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { MoviesComponent } from './components/movies/movies.component';
     MovieComponent,
     FooterComponent,
     MoviesComponent,
+    TrendingMoviesComponent,
+    TopRatedMoviesComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import { MoviesComponent } from './components/movies/movies.component';
     FormsModule,
     HttpClientModule,
     IvyCarouselModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
