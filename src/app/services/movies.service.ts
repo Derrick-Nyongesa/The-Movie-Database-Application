@@ -30,4 +30,12 @@ export class MoviesService {
       `${this.baseUrl}movie/upcoming?api_key=${this.apiKey}&language=${this.language}&page=${page}&region=${this.region}`
     );
   }
+
+  getVariant(): Promise<any> {
+    return this.http
+      .get(
+        `${this.baseUrl}movie/latest?api_key=${this.apiKey}&language=${this.language}&country=${this.region}`
+      )
+      .toPromise();
+  }
 }

@@ -1,38 +1,17 @@
-<Section>
-  <div *ngFor="let slider of upcoming; let i = index" class="content">
-    <div class="slider" *ngIf="current == i" @fade>
-      <div class="backdrop">
-        <div class="lazyloaded">
-          <img
-            alt="{{ slider?.title }}"
-            class="lazyload image"
-            src="https://image.tmdb.org/t/p/original/{{
-              slider?.backdrop_path
-            }}"
-          />
-        </div>
-      </div>
-      <div class="pane">
-        <div>
-          <h1 class="name" [routerLink]="['/movies/', slider.id]">
-            {{ slider?.title }}
-          </h1>
-          <div class="meta">
-            <div class="info">
-              <span class="rate"
-                ><i class="material-icons">star</i
-                ><span>{{ slider?.vote_average }}</span
-                >/10</span
-              >
-              <span> {{ slider?.vote_count | numberWithCommas }} Reviews</span>
-              <span>{{ slider?.release_date | date: "yyyy" }}</span>
-            </div>
-          </div>
-          <div class="desc">
-            {{ slider?.overview }}
-          </div>
-        </div>
-      </div>
+<Section
+  style="
+    background-image: url('https://image.tmdb.org/t/p/w370_and_h556_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg');
+  "
+>
+  <div class="content">
+    <div class="text">
+      <h1>Spider-Man: No Way Home</h1>
+      <p>
+        Peter Parker is unmasked and no longer able to separate his normal life
+        from the high-stakes of being a super-hero. When he asks for help from
+        Doctor Strange the stakes become even more dangerous, forcing him to
+        discover what it truly means to be Spider-Man.
+      </p>
     </div>
   </div>
 </Section>
