@@ -1,0 +1,112 @@
+<section>
+  <div class="content">
+    <span> <a href="/home">HOME </a> </span> |
+    <span style="margin-left: 8px" *ngIf="!searchRes"> UPCOMING MOVIES </span>
+    <span style="margin-left: 8px" *ngIf="searchRes"> SEARCH RESULTS </span>
+  </div>
+</section>
+<div class="search_wrapper">
+  <div class="search_content">
+    <img src="../../../assets/search-icon.svg" alt="search-icon" />
+    <input
+      autocomplete="off"
+      type="text"
+      placeholder="Search Movie"
+      [(ngModel)]="searchStr"
+      name="searchStr"
+      (keyup.enter)="searchMovies(1)"
+    />
+  </div>
+</div>
+
+<div class="container">
+  <div *ngIf="searchRes" class="row">
+    <div
+      class="col-md-3 listing__items"
+      *ngFor="
+        let movie of searchRes
+          | paginate
+            : {
+                itemsPerPage: itemsPerPage,
+                currentPage: p,
+                totalItems: all_movies
+              }
+      "
+    >
+      <div>
+        <div class="listing-item-style">
+          <img
+            *ngIf="movie?.poster_path"
+            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+              movie?.poster_path
+            }}"
+            [alt]="movie.title ? movie.title : movie.name"
+          />
+          <img
+            *ngIf="!movie?.poster_path"
+            src="../../../assets/no_image.jpg"
+            [alt]="movie.title ? movie.title : movie.name"
+          />
+          <h6>{{ movie?.title }}</h6>
+          <p class="rate">
+            <i class="fa fa-star material-icons" aria-hidden="true"></i
+            ><span>{{ movie?.vote_average }}</span> /10
+          </p>
+          <p class="year">
+            <span>{{ movie?.release_date | date: "yyyy" }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!searchRes" class="row">
+    <div
+      class="col-md-3 listing__items"
+      *ngFor="
+        let movie of movies
+          | paginate
+            : {
+                itemsPerPage: itemsPerPage,
+                currentPage: p,
+                totalItems: all_movies
+              }
+      "
+    >
+      <div>
+        <div class="listing-item-style">
+          <img
+            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+              movie?.poster_path
+            }}"
+            [alt]="movie.title ? movie.title : movie.name"
+          />
+          <img
+            *ngIf="!movie?.poster_path"
+            src="../../../assets/no_image.jpg"
+            [alt]="movie.title ? movie.title : movie.name"
+          />
+          <h6>{{ movie?.title }}</h6>
+          <p class="rate">
+            <i class="fa fa-star material-icons" aria-hidden="true"></i
+            ><span>{{ movie?.vote_average }}</span> /10
+          </p>
+          <p class="year">
+            <span>{{ movie?.release_date | date: "yyyy" }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <pagination-controls
+    *ngIf="!searchRes"
+    (pageChange)="getMovie((p = $event))"
+    class="float-right"
+  ></pagination-controls>
+  <pagination-controls
+    *ngIf="searchRes"
+    (pageChange)="searchMovies((p = $event))"
+    class="float-right"
+  ></pagination-controls>
+</div>

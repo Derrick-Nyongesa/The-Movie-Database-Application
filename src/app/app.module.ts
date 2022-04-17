@@ -22,6 +22,7 @@ import { TrendingMoviesComponent } from './components/trending-movies/trending-m
 import { TopRatedMoviesComponent } from './components/top-rated-movies/top-rated-movies.component';
 import { BreadCrumbMoviesComponent } from './components/bread-crumb-movies/bread-crumb-movies.component';
 import { PopularMoviesComponent } from './components/popular-movies/popular-movies.component';
+import { UpcomingMoviesComponent } from './components/upcoming-movies/upcoming-movies.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { PopularMoviesComponent } from './components/popular-movies/popular-movi
     TopRatedMoviesComponent,
     BreadCrumbMoviesComponent,
     PopularMoviesComponent,
+    UpcomingMoviesComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,12 +12,18 @@
   <div>
     <div>
       <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let m of nowPlaying" class="carousel-cell thumb">
+        <div *ngFor="let movie of nowPlaying" class="carousel-cell thumb">
           <img
-            *ngIf="m?.poster_path"
+            *ngIf="movie?.poster_path"
             src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              m?.poster_path
+              movie?.poster_path
             }}"
+            [alt]="movie.title ? movie.title : movie.name"
+          />
+          <img
+            *ngIf="!movie?.poster_path"
+            src="../../../assets/no_image.jpg"
+            [alt]="movie.title ? movie.title : movie.name"
           />
         </div>
       </carousel>
@@ -37,12 +43,18 @@
   <div>
     <div>
       <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let m of topRated" class="carousel-cell thumb">
+        <div *ngFor="let movie of topRated" class="carousel-cell thumb">
           <img
-            *ngIf="m?.poster_path"
+            *ngIf="movie?.poster_path"
             src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              m?.poster_path
+              movie?.poster_path
             }}"
+            [alt]="movie.title ? movie.title : movie.name"
+          />
+          <img
+            *ngIf="!movie?.poster_path"
+            src="../../../assets/no_image.jpg"
+            [alt]="movie.title ? movie.title : movie.name"
           />
         </div>
       </carousel>
@@ -62,12 +74,18 @@
   <div>
     <div>
       <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let m of popular" class="carousel-cell thumb">
+        <div *ngFor="let movie of popular" class="carousel-cell thumb">
           <img
-            *ngIf="m?.poster_path"
+            *ngIf="movie?.poster_path"
             src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              m?.poster_path
+              movie?.poster_path
             }}"
+            [alt]="movie.title ? movie.title : movie.name"
+          />
+          <img
+            *ngIf="!movie?.poster_path"
+            src="../../../assets/no_image.jpg"
+            [alt]="movie.title ? movie.title : movie.name"
           />
         </div>
       </carousel>
@@ -77,18 +95,28 @@
 
 <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
   <h1>Upcoming Movies</h1>
-  <a routerLinkActive="router-link-active" class="listing__explore">
+  <a
+    [routerLink]="['/upcoming']"
+    routerLinkActive="router-link-active"
+    class="listing__explore"
+  >
     <strong>Explore All</strong> </a
   ><br /><br />
   <div>
     <div>
       <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let m of upcoming" class="carousel-cell thumb">
+        <div *ngFor="let movie of upcoming" class="carousel-cell thumb">
           <img
-            *ngIf="m?.poster_path"
+            *ngIf="movie?.poster_path"
             src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              m?.poster_path
+              movie?.poster_path
             }}"
+            [alt]="movie.title ? movie.title : movie.name"
+          />
+          <img
+            *ngIf="!movie?.poster_path"
+            src="../../../assets/no_image.jpg"
+            [alt]="movie.title ? movie.title : movie.name"
           />
         </div>
       </carousel>
