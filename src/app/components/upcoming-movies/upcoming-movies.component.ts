@@ -14,11 +14,6 @@ export class UpcomingMoviesComponent implements OnInit {
   p: number = 1;
   itemsPerPage = 18;
 
-  searchStr: string;
-  searchRes: string;
-  search_all: any;
-  all_results: any;
-
   constructor(private http: MoviesService) {}
 
   ngOnInit(): void {
@@ -33,12 +28,5 @@ export class UpcomingMoviesComponent implements OnInit {
       },
       (error) => console.log(error)
     );
-  }
-
-  searchMovies(page: number) {
-    this.http.searchMovies(this.searchStr, page).subscribe((res) => {
-      this.searchRes = res.results;
-      this.search_all = res.all_results;
-    });
   }
 }

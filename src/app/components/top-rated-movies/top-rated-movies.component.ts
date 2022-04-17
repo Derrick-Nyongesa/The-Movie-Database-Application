@@ -15,10 +15,6 @@ export class TopRatedMoviesComponent implements OnInit {
   p: number = 1;
   itemsPerPage = 18;
 
-  searchStr: string;
-  searchRes: string;
-  search_all: any;
-
   constructor(private http: MoviesService, private pagination: HttpClient) {}
 
   ngOnInit(): void {
@@ -33,12 +29,5 @@ export class TopRatedMoviesComponent implements OnInit {
       },
       (error) => console.log(error)
     );
-  }
-
-  searchMovies(page: number) {
-    this.http.searchMovies(this.searchStr, page).subscribe((res) => {
-      this.searchRes = res.results;
-      this.search_all = res.total_results;
-    });
   }
 }

@@ -21,20 +21,21 @@ export class HomeComponent implements OnInit {
   topRatedTv: any;
   popularTv: any;
 
-  constructor(
-    private movie: MoviesService,
-    private tv: TvService,
-    private http: HttpClient
-  ) {}
+  searchStr: string;
+  searchRes: string;
+  search_all: any;
+
+  p: number = 1;
+  itemsPerPage = 20;
+
+  constructor(private movie: MoviesService) {}
 
   ngOnInit(): void {
     this.trendingMovies(1);
-    this.trendingTvShows(1);
+
     this.topRatedMovies(1);
     this.popularMovies(1);
     this.upComingMovies(1);
-    this.topRatedTvShows(1);
-    this.popularTvShows(1);
   }
 
   trendingMovies(page: number) {
@@ -61,21 +62,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  trendingTvShows(page: number) {
-    this.tv.getTvOnTheAir(page).subscribe((res) => {
-      this.tvShows = res.results;
-    });
-  }
-
-  topRatedTvShows(page: number) {
-    this.tv.getTopRatedTVShows(page).subscribe((res) => {
-      this.topRatedTv = res.results;
-    });
-  }
-
-  popularTvShows(page: number) {
-    this.tv.getPopularTVShow(page).subscribe((res) => {
-      this.popularTv = res.results;
+  searchMovies(page: number) {
+    this.movie.searchMovies(this.searchStr, page).subscribe((res) => {
+      this.searchRes = res.results;
+      this.search_all = res.total_results;
     });
   }
 }

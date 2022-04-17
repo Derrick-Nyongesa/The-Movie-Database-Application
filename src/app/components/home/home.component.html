@@ -1,18 +1,35 @@
 <app-hero-image></app-hero-image>
 
-<div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
-  <h1>Trending Movies</h1>
-  <a
-    [routerLink]="['/trending']"
-    routerLinkActive="router-link-active"
-    class="listing__explore"
-  >
-    <strong>Explore All</strong> </a
-  ><br /><br />
-  <div>
-    <div>
-      <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let movie of nowPlaying" class="carousel-cell thumb">
+<div class="search_wrapper">
+  <div class="search_content">
+    <img src="../../../assets/search-icon.svg" alt="search-icon" />
+    <input
+      autocomplete="off"
+      type="text"
+      placeholder="Search Movie"
+      [(ngModel)]="searchStr"
+      name="searchStr"
+      (keyup.enter)="searchMovies(1)"
+    />
+  </div>
+</div>
+
+<div class="container">
+  <div *ngIf="searchRes" class="row">
+    <div
+      class="col-md-3 listing__items"
+      *ngFor="
+        let movie of searchRes
+          | paginate
+            : {
+                itemsPerPage: itemsPerPage,
+                currentPage: p,
+                totalItems: all_movies
+              }
+      "
+    >
+      <div>
+        <div class="listing-item-style">
           <img
             *ngIf="movie?.poster_path"
             src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
@@ -25,164 +42,148 @@
             src="../../../assets/no_image.jpg"
             [alt]="movie.title ? movie.title : movie.name"
           />
+          <h6>{{ movie?.title }}</h6>
+          <p class="rate">
+            <i class="fa fa-star material-icons" aria-hidden="true"></i
+            ><span>{{ movie?.vote_average }}</span> /10
+          </p>
+          <p class="year">
+            <span>{{ movie?.release_date | date: "yyyy" }}</span>
+          </p>
         </div>
-      </carousel>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
-  <h1>Top-Rated Movies</h1>
-  <a
-    [routerLink]="['/top-rated']"
-    routerLinkActive="router-link-active"
-    class="listing__explore"
-  >
-    <strong>Explore All</strong> </a
-  ><br /><br />
-  <div>
+<pagination-controls
+  *ngIf="searchRes"
+  (pageChange)="searchMovies((p = $event))"
+  class="float-right"
+></pagination-controls>
+
+<div *ngIf="!searchRes">
+  <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
+    <h1>Trending Movies</h1>
+    <a
+      [routerLink]="['/trending']"
+      routerLinkActive="router-link-active"
+      class="listing__explore"
+    >
+      <strong>Explore All</strong> </a
+    ><br /><br />
     <div>
-      <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let movie of topRated" class="carousel-cell thumb">
-          <img
-            *ngIf="movie?.poster_path"
-            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              movie?.poster_path
-            }}"
-            [alt]="movie.title ? movie.title : movie.name"
-          />
-          <img
-            *ngIf="!movie?.poster_path"
-            src="../../../assets/no_image.jpg"
-            [alt]="movie.title ? movie.title : movie.name"
-          />
-        </div>
-      </carousel>
+      <div>
+        <carousel [arrowsOutside]="true" [cellsToShow]="5">
+          <div *ngFor="let movie of nowPlaying" class="carousel-cell thumb">
+            <img
+              *ngIf="movie?.poster_path"
+              src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+                movie?.poster_path
+              }}"
+              [alt]="movie.title ? movie.title : movie.name"
+            />
+            <img
+              *ngIf="!movie?.poster_path"
+              src="../../../assets/no_image.jpg"
+              [alt]="movie.title ? movie.title : movie.name"
+            />
+          </div>
+        </carousel>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
-  <h1>Popular Movies</h1>
-  <a
-    [routerLink]="['/popular']"
-    routerLinkActive="router-link-active"
-    class="listing__explore"
-  >
-    <strong>Explore All</strong> </a
-  ><br /><br />
-  <div>
+  <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
+    <h1>Top-Rated Movies</h1>
+    <a
+      [routerLink]="['/top-rated']"
+      routerLinkActive="router-link-active"
+      class="listing__explore"
+    >
+      <strong>Explore All</strong> </a
+    ><br /><br />
     <div>
-      <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let movie of popular" class="carousel-cell thumb">
-          <img
-            *ngIf="movie?.poster_path"
-            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              movie?.poster_path
-            }}"
-            [alt]="movie.title ? movie.title : movie.name"
-          />
-          <img
-            *ngIf="!movie?.poster_path"
-            src="../../../assets/no_image.jpg"
-            [alt]="movie.title ? movie.title : movie.name"
-          />
-        </div>
-      </carousel>
+      <div>
+        <carousel [arrowsOutside]="true" [cellsToShow]="5">
+          <div *ngFor="let movie of topRated" class="carousel-cell thumb">
+            <img
+              *ngIf="movie?.poster_path"
+              src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+                movie?.poster_path
+              }}"
+              [alt]="movie.title ? movie.title : movie.name"
+            />
+            <img
+              *ngIf="!movie?.poster_path"
+              src="../../../assets/no_image.jpg"
+              [alt]="movie.title ? movie.title : movie.name"
+            />
+          </div>
+        </carousel>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
-  <h1>Upcoming Movies</h1>
-  <a
-    [routerLink]="['/upcoming']"
-    routerLinkActive="router-link-active"
-    class="listing__explore"
-  >
-    <strong>Explore All</strong> </a
-  ><br /><br />
-  <div>
+  <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
+    <h1>Popular Movies</h1>
+    <a
+      [routerLink]="['/popular']"
+      routerLinkActive="router-link-active"
+      class="listing__explore"
+    >
+      <strong>Explore All</strong> </a
+    ><br /><br />
     <div>
-      <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let movie of upcoming" class="carousel-cell thumb">
-          <img
-            *ngIf="movie?.poster_path"
-            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              movie?.poster_path
-            }}"
-            [alt]="movie.title ? movie.title : movie.name"
-          />
-          <img
-            *ngIf="!movie?.poster_path"
-            src="../../../assets/no_image.jpg"
-            [alt]="movie.title ? movie.title : movie.name"
-          />
-        </div>
-      </carousel>
+      <div>
+        <carousel [arrowsOutside]="true" [cellsToShow]="5">
+          <div *ngFor="let movie of popular" class="carousel-cell thumb">
+            <img
+              *ngIf="movie?.poster_path"
+              src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+                movie?.poster_path
+              }}"
+              [alt]="movie.title ? movie.title : movie.name"
+            />
+            <img
+              *ngIf="!movie?.poster_path"
+              src="../../../assets/no_image.jpg"
+              [alt]="movie.title ? movie.title : movie.name"
+            />
+          </div>
+        </carousel>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
-  <h1>Trending TV Shows</h1>
-  <a routerLinkActive="router-link-active" class="listing__explore">
-    <strong>Explore All</strong>
-  </a>
-  <div>
+  <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
+    <h1>Upcoming Movies</h1>
+    <a
+      [routerLink]="['/upcoming']"
+      routerLinkActive="router-link-active"
+      class="listing__explore"
+    >
+      <strong>Explore All</strong> </a
+    ><br /><br />
     <div>
-      <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let t of tvShows" class="carousel-cell thumb">
-          <img
-            *ngIf="t?.poster_path"
-            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              t?.poster_path
-            }}"
-          />
-        </div>
-      </carousel>
-    </div>
-  </div>
-</div>
-
-<div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
-  <h1>Top-Rated TV Shows</h1>
-  <a routerLinkActive="router-link-active" class="listing__explore">
-    <strong>Explore All</strong> </a
-  ><br /><br />
-  <div>
-    <div>
-      <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let t of topRatedTv" class="carousel-cell thumb">
-          <img
-            *ngIf="t?.poster_path"
-            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              t?.poster_path
-            }}"
-          />
-        </div>
-      </carousel>
-    </div>
-  </div>
-</div>
-
-<div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
-  <h1>Popular TV Shows</h1>
-  <a routerLinkActive="router-link-active" class="listing__explore">
-    <strong>Explore All</strong> </a
-  ><br /><br />
-  <div>
-    <div>
-      <carousel [arrowsOutside]="true" [cellsToShow]="5">
-        <div *ngFor="let t of popularTv" class="carousel-cell thumb">
-          <img
-            *ngIf="t?.poster_path"
-            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              t?.poster_path
-            }}"
-          />
-        </div>
-      </carousel>
+      <div>
+        <carousel [arrowsOutside]="true" [cellsToShow]="5">
+          <div *ngFor="let movie of upcoming" class="carousel-cell thumb">
+            <img
+              *ngIf="movie?.poster_path"
+              src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+                movie?.poster_path
+              }}"
+              [alt]="movie.title ? movie.title : movie.name"
+            />
+            <img
+              *ngIf="!movie?.poster_path"
+              src="../../../assets/no_image.jpg"
+              [alt]="movie.title ? movie.title : movie.name"
+            />
+          </div>
+        </carousel>
+      </div>
     </div>
   </div>
 </div>
