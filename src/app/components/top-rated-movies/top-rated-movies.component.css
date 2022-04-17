@@ -14,7 +14,7 @@
   background: #353535;
   margin: 0 auto;
   border-radius: 40px;
-  color: var(--white);
+  color: #ffffff;
 }
 
 .search_content img {
@@ -34,11 +34,14 @@
   width: 95%;
   background: transparent;
   height: 40px;
-  color: var(--white);
+  color: #ffffff;
 }
 
-.search_content input :focus {
-  outline: none;
+input :focus {
+  outline: none !important;
+  outline-style: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
 }
 
 section {

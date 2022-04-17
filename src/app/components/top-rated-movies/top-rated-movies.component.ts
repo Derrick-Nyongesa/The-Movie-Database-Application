@@ -15,6 +15,10 @@ export class TopRatedMoviesComponent implements OnInit {
   p: number = 1;
   itemsPerPage = 18;
 
+  searchStr: string;
+  searchRes: string;
+  search_all: any;
+
   constructor(private http: MoviesService, private pagination: HttpClient) {}
 
   ngOnInit(): void {
@@ -31,10 +35,10 @@ export class TopRatedMoviesComponent implements OnInit {
     );
   }
 
-  // gty(page: any){
-  //   this.pagination.get(`https://api.instantwebtools.net/v1/passenger?page=${page}&size=${this.itemsPerPage}`).subscribe((data: any) => {
-  //     this.passenger =  data.data;
-  //     this.totalItems = data.totalPassengers;
-  //   })
-  // }
+  searchMovies(page: number) {
+    this.http.searchMovies(this.searchStr, page).subscribe((res) => {
+      this.searchRes = res.results;
+      this.search_all = res.total_results;
+    });
+  }
 }

@@ -57,9 +57,9 @@ export class MoviesService {
     );
   }
 
-  getAllTopRatedMovies(): Observable<any> {
+  searchMovies(searchStr: string, page): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}movie/top_rated?api_key=${this.apiKey}&language=${this.language}&region=${this.region}`
+      `${this.baseUrl}search/movie?api_key=${this.apiKey}&language=${this.language}&page=${page}&include_adult=false&query=${searchStr}`
     );
   }
 }
