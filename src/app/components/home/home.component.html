@@ -52,7 +52,11 @@
 
 <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
   <h1>Popular Movies</h1>
-  <a routerLinkActive="router-link-active" class="listing__explore">
+  <a
+    [routerLink]="['/popular']"
+    routerLinkActive="router-link-active"
+    class="listing__explore"
+  >
     <strong>Explore All</strong> </a
   ><br /><br />
   <div>
