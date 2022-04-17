@@ -127,6 +127,10 @@
 .social-icons a.github:hover {
   background-color: #3366cc;
 }
+.social-icons a.e-mail:hover {
+  background-color: #ffffff;
+  color: #26272b;
+}
 @media (max-width: 767px) {
   .social-icons li.title {
     display: block;
