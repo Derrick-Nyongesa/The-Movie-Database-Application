@@ -62,4 +62,32 @@ export class MoviesService {
       `${this.baseUrl}search/movie?api_key=${this.apiKey}&query=${searchStr}`
     );
   }
+
+  getMovie(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}movie/${id}?api_key=${this.apiKey}`);
+  }
+
+  getMovieVideos(id: string): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}movie/${id}/videos?api_key=${this.apiKey}`
+    );
+  }
+
+  getBackdropsImages(id: string) {
+    return this.http.get(
+      `${this.baseUrl}movie/${id}/images?api_key=${this.apiKey}`
+    );
+  }
+
+  getMovieCredits(id: string): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}movie/${id}/credits?api_key=${this.apiKey}`
+    );
+  }
+
+  getRecomendMovies(id: string): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}movie/${id}/recommendations?api_key=${this.apiKey}`
+    );
+  }
 }

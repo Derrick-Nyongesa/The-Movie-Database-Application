@@ -23,6 +23,9 @@ import { TopRatedMoviesComponent } from './components/top-rated-movies/top-rated
 import { BreadCrumbMoviesComponent } from './components/bread-crumb-movies/bread-crumb-movies.component';
 import { PopularMoviesComponent } from './components/popular-movies/popular-movies.component';
 import { UpcomingMoviesComponent } from './components/upcoming-movies/upcoming-movies.component';
+import { NumberWithCommasPipe } from './pipes/number-with-commas.pipe';
+import { TimePipe } from './pipes/time.pipe';
+import { FullDatePipe } from './pipes/full-date.pipe';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { UpcomingMoviesComponent } from './components/upcoming-movies/upcoming-m
     BreadCrumbMoviesComponent,
     PopularMoviesComponent,
     UpcomingMoviesComponent,
+    NumberWithCommasPipe,
+    TimePipe,
+    FullDatePipe,
   ],
   imports: [
     BrowserModule,

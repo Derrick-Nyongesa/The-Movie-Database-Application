@@ -1,5 +1,220 @@
 <div>
-  <app-bread-crumb></app-bread-crumb>
-  <app-movie-info></app-movie-info>
-  <app-movie-info-bar></app-movie-info-bar>
+  <section>
+    <div class="content">
+      <span> <a href="/home">HOME </a> </span> |
+      <span style="margin-left: 8px"> {{ movie?.title }} </span>
+    </div>
+  </section>
+  <div class="hero">
+    <div class="backdrop">
+      <div class="lazyloaded">
+        <!-- <button class="play" type="button" (click)="openDialogMovie(this.video)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55">
+                    <circle cx="27.5" cy="27.5" r="26.75" fill="none" stroke="#fff" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="1.5" />
+                    <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M20.97 40.81L40.64 27.5 20.97 14.19v26.62z" /></svg>
+            </button> -->
+        <img
+          class="lazyload image"
+          src="https://image.tmdb.org/t/p/original/{{ movie?.backdrop_path }}"
+        />
+      </div>
+    </div>
+    <div class="pane">
+      <div>
+        <div class="name">{{ movie?.title }}</div>
+        <div class="meta">
+          <div class="info">
+            <span class="rate">
+              <i class="fa fa-star material-icons" aria-hidden="true"></i
+              ><span>{{ movie?.vote_average }}</span> /10 |
+            </span>
+            <span> {{ movie?.vote_count | numberWithCommas }} Reviews</span> |
+
+            <span>{{ movie?.runtime | time }}</span>
+          </div>
+        </div>
+        <div class="desc">{{ movie?.overview }}</div>
+        <!-- <button
+          type="button"
+          class="button button--icon trailer"
+          (click)="openDialogMovie(this.video)"
+        >
+          <span class="mr-2"><img src="assets/images/play.svg" /></span>
+          <span class="txt">Watch Trailer</span>
+        </button> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="tab-slider--nav">
+      <ul class="tab-slider--tabs">
+        <li
+          class="tab-slider--trigger"
+          [class.active]="viewMode == 'tab1'"
+          rel="tab1"
+          (click)="viewMode = 'tab1'"
+        >
+          OVERVIEW
+        </li>
+        <li
+          class="tab-slider--trigger"
+          [class.active]="viewMode == 'tab2'"
+          rel="tab2"
+          (click)="viewMode = 'tab2'"
+        >
+          IMAGES
+        </li>
+        <li
+          class="tab-slider--trigger"
+          [class.active]="viewMode == 'tab3'"
+          rel="tab2"
+          (click)="viewMode = 'tab3'"
+        >
+          VIDEOS
+        </li>
+      </ul>
+    </div>
+    <div class="tab-slider--container" [ngSwitch]="viewMode">
+      <div id="tab1" class="tab-slider--body" *ngSwitchCase="'tab1'">
+        <div class="listing-space info__movies">
+          <!-- <div class="left">
+            <div class="poster">
+              <img
+                src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+                  movie?.poster_path
+                }}"
+              />
+            </div>
+          </div> -->
+          <div class="right">
+            <div class="overview">
+              <div>{{ movie?.overview }}</div>
+            </div>
+            <div class="stats">
+              <ul class="nolist">
+                <li>
+                  <div class="label">Released</div>
+                  <div class="value">
+                    {{ movie?.release_date | fullDate }}
+                  </div>
+                </li>
+                <li>
+                  <div class="label">Runtime</div>
+                  <div class="value">
+                    {{ movie?.runtime | time }}
+                  </div>
+                </li>
+                <li *ngIf="movie?.budget">
+                  <div class="label">Budget</div>
+                  <div class="value">
+                    ${{ movie?.budget | numberWithCommas }}
+                  </div>
+                </li>
+                <li *ngIf="movie?.revenue">
+                  <div class="label">Revenue</div>
+                  <div class="value">
+                    ${{ movie?.revenue | numberWithCommas }}
+                  </div>
+                </li>
+
+                <li *ngIf="movie?.genres.length">
+                  <div class="label">Genre</div>
+                  <div class="comma_" *ngFor="let genre of movie?.genres">
+                    <a routerLink="/genres/{{ genre.id }}/{{ genre.name }}">{{
+                      genre?.name
+                    }}</a>
+                  </div>
+                </li>
+                <li *ngIf="movie?.status">
+                  <div class="label">Status</div>
+                  <div class="value">
+                    {{ movie?.status }}
+                  </div>
+                </li>
+                <li *ngIf="movie?.spoken_languages?.length">
+                  <div class="label">Language</div>
+                  <div
+                    class="comma_"
+                    *ngFor="let language of movie?.spoken_languages"
+                  >
+                    <a>{{ language?.name }}</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <carousel [arrowsOutside]="true" [cellsToShow]="5">
+            <div *ngFor="let c of casts" class="carousel-cell thumb">
+              <img
+                *ngIf="c.profile_path"
+                src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+                  c?.profile_path
+                }}"
+              />
+              <img *ngIf="!c.profile_path" src="../../../assets/no_image.jpg" />
+            </div>
+          </carousel>
+        </div>
+      </div>
+
+      <div id="tab2" class="tab-slider--body" *ngSwitchCase="'tab2'">
+        <div class="row">
+          <div *ngFor="let backdrop of images | slice: 1:17">
+            <div class="col-md-3 col-sm-12">
+              <div class="">
+                <img
+                  class=""
+                  src="https://image.tmdb.org/t/p/w533_and_h300_bestv2/{{
+                    backdrop?.file_path
+                  }}"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="listing-space backdrop_">
+          <div class="items">
+            <div
+              class="item backdrop_"
+              *ngFor="let backdrop of images | slice: 1:17"
+            >
+              <div class="image">
+                <img
+                  class="lazyload"
+                  src="https://image.tmdb.org/t/p/w533_and_h300_bestv2/{{
+                    backdrop?.file_path
+                  }}"
+                />
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <div id="tab3" class="tab-slider--body" *ngSwitchCase="'tab3'">
+        <div *ngFor="let list of relatedvideos">
+          <div class="name">
+            {{ list?.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>RECCOMMENDED MOVIES</h3>
+    <carousel [arrowsOutside]="true" [cellsToShow]="5">
+      <div *ngFor="let movie of movies" class="carousel-cell thumb">
+        <img
+          routerLink="/movie/{{ movie.id }}"
+          *ngIf="movie?.poster_path"
+          src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+            movie?.poster_path
+          }}"
+        />
+        <img *ngIf="!movie?.poster_path" src="../../../assets/no_image.jpg" />
+      </div>
+    </carousel>
+  </div>
 </div>
