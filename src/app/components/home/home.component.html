@@ -62,7 +62,9 @@
       <div>
         <carousel [arrowsOutside]="true" [cellsToShow]="5">
           <div *ngFor="let movie of nowPlaying" class="carousel-cell thumb">
+            <div></div>
             <img
+              routerLink="/movie/{{ movie.id }}"
               *ngIf="movie?.poster_path"
               src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
                 movie?.poster_path
@@ -94,6 +96,7 @@
         <carousel [arrowsOutside]="true" [cellsToShow]="5">
           <div *ngFor="let movie of topRated" class="carousel-cell thumb">
             <img
+              routerLink="/movie/{{ movie.id }}"
               *ngIf="movie?.poster_path"
               src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
                 movie?.poster_path
@@ -125,6 +128,7 @@
         <carousel [arrowsOutside]="true" [cellsToShow]="5">
           <div *ngFor="let movie of popular" class="carousel-cell thumb">
             <img
+              routerLink="/movie/{{ movie.id }}"
               *ngIf="movie?.poster_path"
               src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
                 movie?.poster_path
@@ -156,6 +160,7 @@
         <carousel [arrowsOutside]="true" [cellsToShow]="5">
           <div *ngFor="let movie of upcoming" class="carousel-cell thumb">
             <img
+              routerLink="/movie/{{ movie.id }}"
               *ngIf="movie?.poster_path"
               src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
                 movie?.poster_path
