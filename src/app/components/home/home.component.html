@@ -16,18 +16,10 @@
 
 <div class="container">
   <div *ngIf="searchRes" class="row">
-    <div
-      class="col-md-3 listing__items"
-      *ngFor="
-        let movie of searchRes
-          | paginate
-            : {
-                itemsPerPage: itemsPerPage,
-                currentPage: p,
-                totalItems: all_movies
-              }
-      "
-    >
+    <div class="wrapper">
+      <h1>Search Results</h1>
+    </div>
+    <div class="col-md-3 listing__items" *ngFor="let movie of searchRes">
       <div>
         <div class="listing-item-style">
           <img
@@ -55,12 +47,6 @@
     </div>
   </div>
 </div>
-
-<pagination-controls
-  *ngIf="searchRes"
-  (pageChange)="searchMovies((p = $event))"
-  class="float-right"
-></pagination-controls>
 
 <div *ngIf="!searchRes">
   <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">

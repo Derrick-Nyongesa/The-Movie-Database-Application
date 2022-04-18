@@ -57,9 +57,9 @@ export class MoviesService {
     );
   }
 
-  searchMovies(searchStr: string, page): Observable<any> {
+  searchMovies(searchStr: string, page: number): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}search/movie?api_key=${this.apiKey}&language=${this.language}&page=${page}&include_adult=false&query=${searchStr}`
+      `${this.baseUrl}search/movie?api_key=${this.apiKey}&query=${searchStr}`
     );
   }
 }

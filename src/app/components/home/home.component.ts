@@ -23,10 +23,6 @@ export class HomeComponent implements OnInit {
 
   searchStr: string;
   searchRes: string;
-  search_all: any;
-
-  p: number = 1;
-  itemsPerPage = 20;
 
   constructor(private movie: MoviesService) {}
 
@@ -63,9 +59,8 @@ export class HomeComponent implements OnInit {
   }
 
   searchMovies(page: number) {
-    this.movie.searchMovies(this.searchStr, page).subscribe((res) => {
+    this.movie.searchMovies(this.searchStr, page).subscribe((res: any) => {
       this.searchRes = res.results;
-      this.search_all = res.total_results;
     });
   }
 }
