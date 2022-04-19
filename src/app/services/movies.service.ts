@@ -90,4 +90,8 @@ export class MoviesService {
       `${this.baseUrl}movie/${id}/recommendations?api_key=${this.apiKey}`
     );
   }
+
+  getPersonDetail(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}person/${id}?api_key=${this.apiKey}`);
+  }
 }

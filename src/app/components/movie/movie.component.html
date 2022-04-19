@@ -147,14 +147,18 @@
             </div>
           </div>
           <carousel [arrowsOutside]="true" [cellsToShow]="5">
-            <div *ngFor="let c of casts" class="carousel-cell thumb">
+            <div *ngFor="let cast of casts" class="carousel-cell thumb">
               <img
-                *ngIf="c.profile_path"
+                routerLink="/cast/{{ cast.id }}"
+                *ngIf="cast.profile_path"
                 src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-                  c?.profile_path
+                  cast?.profile_path
                 }}"
               />
-              <img *ngIf="!c.profile_path" src="../../../assets/no_image.jpg" />
+              <img
+                *ngIf="!cast.profile_path"
+                src="../../../assets/no_image.jpg"
+              />
             </div>
           </carousel>
         </div>

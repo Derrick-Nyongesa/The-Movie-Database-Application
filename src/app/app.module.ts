@@ -26,6 +26,8 @@ import { UpcomingMoviesComponent } from './components/upcoming-movies/upcoming-m
 import { NumberWithCommasPipe } from './pipes/number-with-commas.pipe';
 import { TimePipe } from './pipes/time.pipe';
 import { FullDatePipe } from './pipes/full-date.pipe';
+import { PersonComponent } from './components/person/person.component';
+import { TvTestComponent } from './components/tv-test/tv-test.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { FullDatePipe } from './pipes/full-date.pipe';
     NumberWithCommasPipe,
     TimePipe,
     FullDatePipe,
+    PersonComponent,
+    TvTestComponent,
   ],
   imports: [
     BrowserModule,

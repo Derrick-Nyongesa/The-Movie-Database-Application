@@ -89,7 +89,7 @@ export class MovieComponent implements OnInit {
   getRecommendedMovies(id) {
     this.http.getRecomendMovies(id).subscribe((res) => {
       this.movies = res.results;
-      console.log(res);
+      // console.log(res);
     });
   }
 }
