@@ -122,9 +122,9 @@
 
                 <li *ngIf="movie?.genres.length">
                   <div class="label">Genre</div>
-                  <div class="comma_" *ngFor="let genre of movie?.genres">
-                    <a routerLink="/genres/{{ genre.id }}/{{ genre.name }}">{{
-                      genre?.name
+                  <div class="comma_" *ngFor="let genres of movie?.genres">
+                    <a routerLink="/genres/{{ genres.id }}/{{ genres.name }}">{{
+                      genres?.name
                     }}</a>
                   </div>
                 </li>

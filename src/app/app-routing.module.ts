@@ -7,14 +7,14 @@ import { TrendingMoviesComponent } from './components/trending-movies/trending-m
 import { PopularMoviesComponent } from './components/popular-movies/popular-movies.component';
 import { UpcomingMoviesComponent } from './components/upcoming-movies/upcoming-movies.component';
 import { ActorsComponent } from './components/actors/actors.component';
-import { PersonComponent } from './components/person/person.component';
-import { TvTestComponent } from './components/tv-test/tv-test.component';
+import { GenresComponent } from './components/genres/genres.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'movie/:id', component: MovieComponent },
   { path: 'cast/:id', component: ActorsComponent },
+  { path: 'genres/:id/:name', component: GenresComponent },
   { path: 'trending', component: TrendingMoviesComponent },
   { path: 'top-rated', component: TopRatedMoviesComponent },
   { path: 'popular', component: PopularMoviesComponent },

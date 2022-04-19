@@ -28,6 +28,7 @@ import { TimePipe } from './pipes/time.pipe';
 import { FullDatePipe } from './pipes/full-date.pipe';
 import { PersonComponent } from './components/person/person.component';
 import { TvTestComponent } from './components/tv-test/tv-test.component';
+import { GenresComponent } from './components/genres/genres.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { TvTestComponent } from './components/tv-test/tv-test.component';
     FullDatePipe,
     PersonComponent,
     TvTestComponent,
+    GenresComponent,
   ],
   imports: [
     BrowserModule,

@@ -94,4 +94,10 @@ export class MoviesService {
   getPersonDetail(id: string): Observable<any> {
     return this.http.get(`${this.baseUrl}person/${id}?api_key=${this.apiKey}`);
   }
+
+  getMoviesByGenre(id: string): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}genre/${id}/movies?api_key=${this.apiKey}`
+    );
+  }
 }
