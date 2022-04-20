@@ -1,32 +1,27 @@
 <!-- <app-hero-image></app-hero-image> -->
-<div class="hero">
-  <div class="backdrop">
-    <div class="lazyloaded">
-      <img
-        class="lazyload image"
-        *ngIf="newMovie?.poster_path"
-        src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-          newMovie?.poster_path
-        }}"
-      />
-      <img
-        style="width: 100%"
-        class="lazyload image"
-        *ngIf="!newMovie?.poster_path"
-        src="../../../assets/no_image.jpg"
-      />
+<Section
+  style="
+    background: url('https://image.tmdb.org/t/p/w370_and_h556_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+  "
+>
+  <div class="content">
+    <div class="text">
+      <h1>Spider-Man: No Way Home</h1>
+      <p>
+        Peter Parker is unmasked and no longer able to separate his normal life
+        from the high-stakes of being a super-hero. When he asks for help from
+        Doctor Strange the stakes become even more dangerous, forcing him to
+        discover what it truly means to be Spider-Man.
+      </p>
     </div>
   </div>
-  <div class="pane">
-    <div>
-      <div class="name">{{ newMovie?.title }}</div>
-      <div class="meta"></div>
-      <div class="desc">
-        {{ newMovie?.overview }}
-      </div>
-    </div>
-  </div>
-</div>
+</Section>
 
 <div class="search_wrapper">
   <div class="search_content">

@@ -1,4 +1,4 @@
-/* section {
+section {
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 41%,
@@ -58,7 +58,7 @@ p {
   .text {
     max-width: 100%;
   }
-} */
+}
 
 .image {
   display: inline-block;
