@@ -100,4 +100,10 @@ export class MoviesService {
       `${this.baseUrl}genre/${id}/movies?api_key=${this.apiKey}`
     );
   }
+
+  getGenres(): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}genre/movie/list?api_key=${this.apiKey}&language=${this.language}`
+    );
+  }
 }
