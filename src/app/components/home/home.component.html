@@ -1,4 +1,32 @@
-<app-hero-image></app-hero-image>
+<!-- <app-hero-image></app-hero-image> -->
+<div class="hero">
+  <div class="backdrop">
+    <div class="lazyloaded">
+      <img
+        class="lazyload image"
+        *ngIf="newMovie?.poster_path"
+        src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+          newMovie?.poster_path
+        }}"
+      />
+      <img
+        style="width: 100%"
+        class="lazyload image"
+        *ngIf="!newMovie?.poster_path"
+        src="../../../assets/no_image.jpg"
+      />
+    </div>
+  </div>
+  <div class="pane">
+    <div>
+      <div class="name">{{ newMovie?.title }}</div>
+      <div class="meta"></div>
+      <div class="desc">
+        {{ newMovie?.overview }}
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="search_wrapper">
   <div class="search_content">

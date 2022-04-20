@@ -102,12 +102,12 @@
 }
 
 /*  */
-.backdrop {
+/* .backdrop {
   position: relative;
   display: flex;
   flex: 1 1 auto;
   min-height: 0;
-}
+} */
 
 @media (min-width: 1024px) {
   .backdrop {

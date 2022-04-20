@@ -106,4 +106,10 @@ export class MoviesService {
       `${this.baseUrl}genre/movie/list?api_key=${this.apiKey}&language=${this.language}`
     );
   }
+
+  getLatestMovie(): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}movie/latest?api_key=${this.apiKey}&language=${this.language}`
+    );
+  }
 }

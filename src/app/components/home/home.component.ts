@@ -5,6 +5,13 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { TvService } from 'src/app/services/tv.service';
 import { HttpClient } from '@angular/common/http';
 
+export interface Movie {
+  title?: string;
+  overview?: string;
+  poster_path?: string;
+  genres: string[];
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -24,6 +31,8 @@ export class HomeComponent implements OnInit {
   searchStr: string;
   searchRes: string;
 
+  newMovie: Movie;
+
   constructor(private movie: MoviesService) {}
 
   ngOnInit(): void {
@@ -32,6 +41,7 @@ export class HomeComponent implements OnInit {
     this.topRatedMovies(1);
     this.popularMovies(1);
     this.upComingMovies(1);
+    this.latestMovie();
   }
 
   trendingMovies(page: number) {
@@ -62,5 +72,17 @@ export class HomeComponent implements OnInit {
     this.movie.searchMovies(this.searchStr, page).subscribe((res: any) => {
       this.searchRes = res.results;
     });
+  }
+
+  latestMovie() {
+    this.movie.getLatestMovie().subscribe(
+      (data) => {
+        this.newMovie = data;
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
