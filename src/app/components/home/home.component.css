@@ -71,6 +71,7 @@ input :focus {
 
 img:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 
 .listing__explore {

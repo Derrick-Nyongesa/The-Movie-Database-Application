@@ -71,7 +71,7 @@
   </div>
 </div>
 
-<div *ngIf="!searchRes">
+<div *ngIf="!searchRes" class="container">
   <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
     <h1>Trending Movies</h1>
     <a
@@ -83,10 +83,10 @@
     ><br /><br />
     <div>
       <div>
-        <carousel [arrowsOutside]="true" [cellsToShow]="5">
-          <div *ngFor="let movie of nowPlaying" class="carousel-cell thumb">
-            <div></div>
+        <carousel [arrowsOutside]="true" [cellsToShow]="6" arrowsTheme="dark">
+          <div *ngFor="let movie of nowPlaying" class="carousel-cell">
             <img
+              style="object-fit: fill; border-radius: 20px"
               routerLink="/movie/{{ movie.id }}"
               *ngIf="movie?.poster_path"
               src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
@@ -95,6 +95,7 @@
               [alt]="movie.title ? movie.title : movie.name"
             />
             <img
+              style="object-fit: fill"
               *ngIf="!movie?.poster_path"
               src="../../../assets/no_image.jpg"
               [alt]="movie.title ? movie.title : movie.name"
@@ -105,6 +106,7 @@
     </div>
   </div>
 
+  <div class="container"></div>
   <div class="wrapper" style="margin-bottom: 100px; margin-top: 50px">
     <h1>Top-Rated Movies</h1>
     <a
@@ -116,9 +118,10 @@
     ><br /><br />
     <div>
       <div>
-        <carousel [arrowsOutside]="true" [cellsToShow]="5">
+        <carousel [arrowsOutside]="true" [cellsToShow]="6" arrowsTheme="dark">
           <div *ngFor="let movie of topRated" class="carousel-cell thumb">
             <img
+              style="object-fit: fill; border-radius: 20px"
               routerLink="/movie/{{ movie.id }}"
               *ngIf="movie?.poster_path"
               src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
@@ -127,6 +130,7 @@
               [alt]="movie.title ? movie.title : movie.name"
             />
             <img
+              style="object-fit: fill"
               *ngIf="!movie?.poster_path"
               src="../../../assets/no_image.jpg"
               [alt]="movie.title ? movie.title : movie.name"
@@ -148,9 +152,10 @@
     ><br /><br />
     <div>
       <div>
-        <carousel [arrowsOutside]="true" [cellsToShow]="5">
+        <carousel [arrowsOutside]="true" [cellsToShow]="6" arrowsTheme="dark">
           <div *ngFor="let movie of popular" class="carousel-cell thumb">
             <img
+              style="object-fit: fill; border-radius: 20px"
               routerLink="/movie/{{ movie.id }}"
               *ngIf="movie?.poster_path"
               src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
@@ -159,6 +164,7 @@
               [alt]="movie.title ? movie.title : movie.name"
             />
             <img
+              style="object-fit: fill"
               *ngIf="!movie?.poster_path"
               src="../../../assets/no_image.jpg"
               [alt]="movie.title ? movie.title : movie.name"
@@ -180,9 +186,10 @@
     ><br /><br />
     <div>
       <div>
-        <carousel [arrowsOutside]="true" [cellsToShow]="5">
+        <carousel [arrowsOutside]="true" [cellsToShow]="6" arrowsTheme="dark">
           <div *ngFor="let movie of upcoming" class="carousel-cell thumb">
             <img
+              style="object-fit: fill; border-radius: 20px"
               routerLink="/movie/{{ movie.id }}"
               *ngIf="movie?.poster_path"
               src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
@@ -191,6 +198,7 @@
               [alt]="movie.title ? movie.title : movie.name"
             />
             <img
+              style="object-fit: fill"
               *ngIf="!movie?.poster_path"
               src="../../../assets/no_image.jpg"
               [alt]="movie.title ? movie.title : movie.name"

@@ -29,6 +29,7 @@ import { FullDatePipe } from './pipes/full-date.pipe';
 import { PersonComponent } from './components/person/person.component';
 import { TvTestComponent } from './components/tv-test/tv-test.component';
 import { GenresComponent } from './components/genres/genres.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { GenresComponent } from './components/genres/genres.component';
     HttpClientModule,
     IvyCarouselModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
