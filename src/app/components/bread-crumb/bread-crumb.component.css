@@ -26,3 +26,12 @@ section {
     font-size: 1rem;
   }
 }
+
+a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+a:hover {
+  opacity: 0.5;
+}
