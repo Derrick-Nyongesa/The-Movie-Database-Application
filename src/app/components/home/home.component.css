@@ -90,6 +90,7 @@ img:hover {
 .listing__explore:hover,
 :focus {
   opacity: 0.8;
+  text-decoration: none;
 }
 
 .image {
