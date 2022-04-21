@@ -83,7 +83,11 @@
     ><br /><br />
     <div>
       <div>
-        <carousel [arrowsOutside]="true" [cellsToShow]="6" arrowsTheme="dark">
+        <carousel
+          [arrowsOutside]="true"
+          arrowsTheme="dark"
+          [transitionDuration]="1000"
+        >
           <div *ngFor="let movie of nowPlaying" class="carousel-cell">
             <img
               style="object-fit: fill; border-radius: 20px"
@@ -118,7 +122,11 @@
     ><br /><br />
     <div>
       <div>
-        <carousel [arrowsOutside]="true" [cellsToShow]="6" arrowsTheme="dark">
+        <carousel
+          [arrowsOutside]="true"
+          arrowsTheme="dark"
+          [transitionDuration]="1000"
+        >
           <div *ngFor="let movie of topRated" class="carousel-cell thumb">
             <img
               style="object-fit: fill; border-radius: 20px"
@@ -152,7 +160,11 @@
     ><br /><br />
     <div>
       <div>
-        <carousel [arrowsOutside]="true" [cellsToShow]="6" arrowsTheme="dark">
+        <carousel
+          [arrowsOutside]="true"
+          arrowsTheme="dark"
+          [transitionDuration]="1000"
+        >
           <div *ngFor="let movie of popular" class="carousel-cell thumb">
             <img
               style="object-fit: fill; border-radius: 20px"
@@ -186,7 +198,11 @@
     ><br /><br />
     <div>
       <div>
-        <carousel [arrowsOutside]="true" [cellsToShow]="6" arrowsTheme="dark">
+        <carousel
+          [arrowsOutside]="true"
+          arrowsTheme="dark"
+          [transitionDuration]="1000"
+        >
           <div *ngFor="let movie of upcoming" class="carousel-cell thumb">
             <img
               style="object-fit: fill; border-radius: 20px"
