@@ -1,0 +1,18 @@
+h1 {
+  font-size: 2.5rem;
+  color: #353535;
+  font-weight: 500;
+  margin-top: 70px;
+}
+@media screen and (max-width: 720px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 700px) {
+  .overview_info {
+    margin-left: 200px;
+    margin-top: 100px;
+  }
+}

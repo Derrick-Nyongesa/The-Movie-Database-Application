@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
       <div class="spacing info">
@@ -12,38 +12,16 @@
             />
           </div>
         </div>
-        <div class="right">
+        <div class="">
           <div class="overview">
-            <h2 class="title">{{ cast?.name }}</h2>
-            <div *ngIf="cast.biography">{{ cast?.biography }}</div>
-          </div>
-          <div class="stats">
-            <ul class="nolist">
-              <li *ngIf="cast.known_for_department">
-                <div class="label">Known For</div>
-                <div class="value">
-                  {{ cast?.known_for_department }}
-                </div>
-              </li>
-              <li *ngIf="cast.birthday">
-                <div class="label">Born</div>
-                <div class="value">
-                  {{ cast?.birthday | fullDate }}
-                </div>
-              </li>
-              <li *ngIf="cast?.deathday">
-                <div class="label">Death</div>
-                <div class="value">
-                  {{ cast?.deathday | fullDate }}
-                </div>
-              </li>
-              <li *ngIf="cast.place_of_birth">
-                <div class="label">Place of Birth</div>
-                <div class="value">
-                  {{ cast?.place_of_birth }}
-                </div>
-              </li>
-            </ul>
+            <h1 style="text-align: center">{{ cast?.name }}</h1>
+            <div
+              *ngIf="cast.biography"
+              style="line-height: 2rem"
+              class="overview_info"
+            >
+              {{ cast?.biography }}
+            </div>
           </div>
         </div>
       </div>
