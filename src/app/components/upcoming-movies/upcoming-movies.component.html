@@ -25,13 +25,8 @@
             src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
               movie?.poster_path
             }}"
-            [alt]="movie.title ? movie.title : movie.name"
           />
-          <img
-            *ngIf="!movie?.poster_path"
-            src="../../../assets/no_image.jpg"
-            [alt]="movie.title ? movie.title : movie.name"
-          />
+          <img *ngIf="!movie?.poster_path" src="../../../assets/no_image.jpg" />
           <h6>{{ movie?.title }}</h6>
           <p class="rate">
             <i class="fa fa-facebook material-icons" aria-hidden="true"></i

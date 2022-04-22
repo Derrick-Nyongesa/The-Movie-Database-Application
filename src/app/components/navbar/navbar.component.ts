@@ -13,6 +13,8 @@ export interface Genres {
 export class NavbarComponent implements OnInit {
   isCollapsed = false;
 
+  collapse: boolean = true;
+
   genreslist: any;
 
   constructor(private http: MoviesService) {}

@@ -4,3 +4,16 @@
     width: 80px;
   }
 }
+
+.nav-item a {
+  color: #ffffff;
+}
+
+.nav-item a:hover {
+  color: #653f92;
+  cursor: pointer;
+}
+
+.navbar-nav > .active > a {
+  color: #653f92;
+}
