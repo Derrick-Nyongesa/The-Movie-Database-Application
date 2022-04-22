@@ -112,4 +112,10 @@ export class MoviesService {
       `${this.baseUrl}movie/latest?api_key=${this.apiKey}&language=${this.language}`
     );
   }
+
+  getMovieReviews(id: string, page: number) {
+    return this.http.get(
+      `${this.baseUrl}movie/${id}/reviews?api_key=${this.apiKey}&language=${this.language}&page=${page}`
+    );
+  }
 }

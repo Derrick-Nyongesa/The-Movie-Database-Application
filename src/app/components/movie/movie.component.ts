@@ -13,6 +13,9 @@ export interface Movie {
   budget?: number;
   revenue?: number;
   genres: string[];
+  status: string;
+  spoken_languages: string;
+  poster_path: string;
 }
 
 export interface Cast {
@@ -36,8 +39,7 @@ export class MovieComponent implements OnInit {
   images: any = [];
   casts: Cast[] = [];
   movies: any;
-
-  viewMode = 'tab1';
+  reviews: any;
 
   constructor(private http: MoviesService, private router: ActivatedRoute) {}
 
@@ -49,6 +51,7 @@ export class MovieComponent implements OnInit {
       this.getCast(this.id);
       this.getBackropsImages(this.id);
       this.getRecommendedMovies(this.id);
+      this.getReviews(this.id, 1);
     });
   }
 
@@ -89,6 +92,13 @@ export class MovieComponent implements OnInit {
   getRecommendedMovies(id) {
     this.http.getRecomendMovies(id).subscribe((res) => {
       this.movies = res.results;
+      // console.log(res);
+    });
+  }
+
+  getReviews(id, page: number) {
+    this.http.getMovieReviews(id, page).subscribe((res: any) => {
+      this.reviews = res.results;
       // console.log(res);
     });
   }
