@@ -99,7 +99,6 @@ export class MovieComponent implements OnInit {
   getReviews(id, page: number) {
     this.http.getMovieReviews(id, page).subscribe((res: any) => {
       this.reviews = res.results;
-      // console.log(res);
     });
   }
 }

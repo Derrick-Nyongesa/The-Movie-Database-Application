@@ -8,7 +8,18 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3 listing__items" *ngFor="let movie of movies">
+    <div
+      class="col-md-3 listing__items"
+      *ngFor="
+        let movie of movies
+          | paginate
+            : {
+                itemsPerPage: itemsPerPage,
+                currentPage: p,
+                totalItems: all_movies
+              }
+      "
+    >
       <div routerLink="/movie/{{ movie.id }}">
         <div class="listing-item-style">
           <img
@@ -24,8 +35,8 @@
           />
           <h6>{{ movie?.title }}</h6>
           <p class="rate">
-            <i class="fa fa-star material-icons" aria-hidden="true"></i
-            ><span>{{ movie?.vote_average }}</span> /10
+            <i class="fa fa-facebook material-icons" aria-hidden="true"></i
+            ><span>{{ movie?.vote_average }}</span>
           </p>
           <p class="year">
             <span>{{ movie?.release_date | date: "yyyy" }}</span>
@@ -34,4 +45,9 @@
       </div>
     </div>
   </div>
+
+  <pagination-controls
+    (pageChange)="getMovieGenre(id, (p = $event))"
+    class="float-right"
+  ></pagination-controls>
 </div>
