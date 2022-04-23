@@ -9,6 +9,7 @@ import { UpcomingMoviesComponent } from './components/upcoming-movies/upcoming-m
 import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PersonComponent } from './components/person/person.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'top-rated', component: TopRatedMoviesComponent },
   { path: 'popular', component: PopularMoviesComponent },
   { path: 'upcoming', component: UpcomingMoviesComponent },
+  { path: 'person', component: PersonComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

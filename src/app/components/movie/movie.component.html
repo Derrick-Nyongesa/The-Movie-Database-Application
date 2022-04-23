@@ -46,7 +46,7 @@
             <span>{{ movie?.runtime | time }}</span>
           </div>
         </div>
-        <div class="desc" style="line-height: 2rem; text-align: center">
+        <div class="desc" style="line-height: 2rem">
           {{ movie?.overview }}
         </div>
         <!-- <button
@@ -165,7 +165,7 @@
             </carousel>
           </div>
 
-          <div *ngIf="casts.length === 0">
+          <div *ngIf="casts?.length === 0">
             <h1 style="font-weight: 100">Casts not available</h1>
           </div>
         </div>
@@ -197,7 +197,7 @@
         </div>
       </carousel>
     </div>
-    <div *ngIf="movies.length === 0">
+    <div *ngIf="movies?.length === 0">
       <h1 style="font-weight: 100">No Recommended Movie</h1>
     </div>
 
@@ -258,7 +258,7 @@
       </div>
     </div>
 
-    <div *ngIf="reviews.length === 0">
+    <div *ngIf="reviews?.length === 0">
       <h1 style="font-weight: 100">No Reviews for this movie</h1>
     </div>
   </div>
