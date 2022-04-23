@@ -8,6 +8,7 @@ import { PopularMoviesComponent } from './components/popular-movies/popular-movi
 import { UpcomingMoviesComponent } from './components/upcoming-movies/upcoming-movies.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'top-rated', component: TopRatedMoviesComponent },
   { path: 'popular', component: PopularMoviesComponent },
   { path: 'upcoming', component: UpcomingMoviesComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
