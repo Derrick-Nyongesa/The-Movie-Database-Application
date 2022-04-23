@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from 'src/app/services/movies.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { delay } from 'rxjs/internal/operators/delay';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { TvService } from 'src/app/services/tv.service';
@@ -33,11 +34,19 @@ export class HomeComponent implements OnInit {
 
   newMovie: Movie;
 
-  constructor(private movie: MoviesService) {}
+  constructor(
+    private movie: MoviesService,
+    private ngxService: NgxUiLoaderService
+  ) {}
 
   ngOnInit(): void {
-    this.trendingMovies(1);
+    this.ngxService.start(); // start foreground spinner of the master loader with 'default' taskId
+    // Stop the foreground loading after 5s
+    setTimeout(() => {
+      this.ngxService.stop(); // stop foreground spinner of the master loader with 'default' taskId
+    }, 1000);
 
+    this.trendingMovies(1);
     this.topRatedMovies(1);
     this.popularMovies(1);
     this.upComingMovies(1);

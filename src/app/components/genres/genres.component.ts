@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from 'src/app/services/movies.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-genres',
@@ -16,9 +17,19 @@ export class GenresComponent implements OnInit {
   p: number = 1;
   itemsPerPage = 18;
 
-  constructor(private http: MoviesService, private route: ActivatedRoute) {}
+  constructor(
+    private http: MoviesService,
+    private route: ActivatedRoute,
+    private ngxService: NgxUiLoaderService
+  ) {}
 
   ngOnInit(): void {
+    this.ngxService.start(); // start foreground spinner of the master loader with 'default' taskId
+    // Stop the foreground loading after 5s
+    setTimeout(() => {
+      this.ngxService.stop(); // stop foreground spinner of the master loader with 'default' taskId
+    }, 1000);
+
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.title = params['name'];

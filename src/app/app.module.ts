@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -65,6 +66,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     IvyCarouselModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
+    NgxUiLoaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

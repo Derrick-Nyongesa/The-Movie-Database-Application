@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from 'src/app/services/movies.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-popular-movies',
@@ -14,9 +15,17 @@ export class PopularMoviesComponent implements OnInit {
   p: number = 1;
   itemsPerPage = 18;
 
-  constructor(private http: MoviesService) {}
+  constructor(
+    private http: MoviesService,
+    private ngxService: NgxUiLoaderService
+  ) {}
 
   ngOnInit(): void {
+    this.ngxService.start(); // start foreground spinner of the master loader with 'default' taskId
+    // Stop the foreground loading after 5s
+    setTimeout(() => {
+      this.ngxService.stop(); // stop foreground spinner of the master loader with 'default' taskId
+    }, 1000);
     this.getMovie(1);
   }
 

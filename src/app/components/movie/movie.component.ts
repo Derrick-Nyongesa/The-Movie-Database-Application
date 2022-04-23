@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MoviesService } from 'src/app/services/movies.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 export interface Movie {
   title?: string;
@@ -41,9 +42,18 @@ export class MovieComponent implements OnInit {
   movies: any;
   reviews: any;
 
-  constructor(private http: MoviesService, private router: ActivatedRoute) {}
+  constructor(
+    private http: MoviesService,
+    private router: ActivatedRoute,
+    private ngxService: NgxUiLoaderService
+  ) {}
 
   ngOnInit(): void {
+    this.ngxService.start(); // start foreground spinner of the master loader with 'default' taskId
+    // Stop the foreground loading after 5s
+    setTimeout(() => {
+      this.ngxService.stop(); // stop foreground spinner of the master loader with 'default' taskId
+    }, 3000);
     this.router.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.getMovie(this.id);
