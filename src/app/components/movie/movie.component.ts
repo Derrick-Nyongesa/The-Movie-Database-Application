@@ -69,7 +69,7 @@ export class MovieComponent implements OnInit {
     this.http.getMovie(id).subscribe(
       (data) => {
         this.movie = data;
-        console.log(data);
+        // console.log(data);
       },
       (error) => {
         console.log(error);
@@ -82,7 +82,7 @@ export class MovieComponent implements OnInit {
       if (res.results.length) {
         this.video = res.results[0];
         this.relatedVideos = res.results;
-        // console.log(res);
+        console.log(res);
       }
     });
   }
