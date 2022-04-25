@@ -10,13 +10,6 @@
   <div class="hero">
     <div class="backdrop">
       <div class="lazyloaded">
-        <!-- <button class="play" type="button" (click)="openDialogMovie(this.video)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55">
-                    <circle cx="27.5" cy="27.5" r="26.75" fill="none" stroke="#fff" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="1.5" />
-                    <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M20.97 40.81L40.64 27.5 20.97 14.19v26.62z" /></svg>
-            </button> -->
         <img
           class="lazyload image"
           src="https://image.tmdb.org/t/p/original/{{ movie?.backdrop_path }}"
@@ -65,14 +58,6 @@
           <i class="fa fa-play" aria-hidden="true"></i>
           Watch Trailer
         </button>
-        <!-- <button
-          type="button"
-          class="button button--icon trailer"
-          (click)="openDialogMovie(this.video)"
-        >
-          <span class="mr-2"><img src="assets/images/play.svg" /></span>
-          <span class="txt">Watch Trailer</span>
-        </button> -->
       </div>
     </div>
   </div>
@@ -220,20 +205,6 @@
     <h1 class="text-center">Reviews</h1>
     <div *ngIf="reviews">
       <div *ngFor="let review of reviews">
-        <!-- <div>
-          <img
-            *ngIf="review?.avatar_path"
-            src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
-              review?.avatar_path
-            }}"
-          />
-          <img
-            sty
-            *ngIf="!review?.avatar_path"
-            style="border-radius: 20px; width: 5%; height: 5%"
-            src="../../../assets/no_image.jpg"
-          />
-        </div> -->
         <div
           style="
             margin-bottom: 50px;

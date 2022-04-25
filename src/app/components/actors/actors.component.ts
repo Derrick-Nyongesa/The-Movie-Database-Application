@@ -52,11 +52,4 @@ export class ActorsComponent implements OnInit {
       }
     );
   }
-
-  // getCastDetails(id) {
-  //   this.http.getPersonDetail(id).subscribe((res: any) => {
-  //     this.cast = res.results;
-  //     console.log(res);
-  //   });
-  // }
 }
