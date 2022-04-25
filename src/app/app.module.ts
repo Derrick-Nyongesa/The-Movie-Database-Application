@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +33,7 @@ import { PersonComponent } from './components/person/person.component';
 import { TvTestComponent } from './components/tv-test/tv-test.component';
 import { GenresComponent } from './components/genres/genres.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MovieDialogComponent } from './components/movie-dialog/movie-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PersonComponent,
     TvTestComponent,
     GenresComponent,
+    MovieDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +71,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgxPaginationModule,
     BrowserAnimationsModule,
     NgxUiLoaderModule,
+    MatDialogModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

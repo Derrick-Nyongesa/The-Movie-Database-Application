@@ -49,6 +49,22 @@
         <div class="desc" style="line-height: 2rem">
           {{ movie?.overview }}
         </div>
+        <br />
+        <button
+          (click)="openDialog(this.video)"
+          class="playTrailer"
+          style="
+            background: transparent;
+            color: #ffffff;
+            padding: 10px;
+            border: 1px solid #ffffff;
+          "
+          onMouseOver="this.style.color='red'"
+          onMouseOut="this.style.color='#ffffff'"
+        >
+          <i class="fa fa-play" aria-hidden="true"></i>
+          Watch Trailer
+        </button>
         <!-- <button
           type="button"
           class="button button--icon trailer"

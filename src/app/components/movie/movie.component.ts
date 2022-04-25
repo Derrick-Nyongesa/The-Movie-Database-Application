@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MoviesService } from 'src/app/services/movies.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-
+import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
 export interface Movie {
   title?: string;
   vote_average?: number;
@@ -42,10 +44,15 @@ export class MovieComponent implements OnInit {
   movies: any;
   reviews: any;
 
+  baseurl = 'https://www.youtube.com/embed/';
+  autoPlay = '?rel=0;&autoplay=1&mute=0';
+
   constructor(
     private http: MoviesService,
     private router: ActivatedRoute,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private dialog: MatDialog,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -62,6 +69,17 @@ export class MovieComponent implements OnInit {
       this.getBackropsImages(this.id);
       this.getRecommendedMovies(this.id);
       this.getReviews(this.id, 1);
+    });
+  }
+
+  openDialog(video) {
+    this.video['url'] = this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.baseurl + video.key + this.autoPlay
+    );
+    this.dialog.open(MovieDialogComponent, {
+      height: '600px',
+      width: '900px',
+      data: { video: this.video },
     });
   }
 
