@@ -1,27 +1,31 @@
-# TheMovieDatabaseApplication
+# The MovieDatabase Application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.18.
 
-## Development server
+## Author's Name
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Derrick Daniel Nyongesa
 
-## Code scaffolding
+## Frameworks used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Angular](https://angular.io/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Angular Material](https://material.angular.io/)
 
-## Build
+## Languages used
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- [Typescript](https://www.typescriptlang.org/)
+- HTML
+- CSS
 
-## Running unit tests
+## Known Bugs
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- The Project upload functionality may not work properly, if you encounter an error, reload the page.
 
-## Running end-to-end tests
+## Contact Information
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Any query? Contact me at [nyongesaderrick@gmail.com]
 
-## Further help
+## Copyright and license information
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Licensed under the [MIT license](LICENSE).
